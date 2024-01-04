@@ -1,3 +1,3 @@
-export default class Classroom {
+export default class ClassRoom {
     maxStudentsSize = _maxStudentsSize;
 }
