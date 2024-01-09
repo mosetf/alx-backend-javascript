@@ -1,6 +1,9 @@
 export default function getStudentsByLocation(students, city) {
-    if (students instanceof Array) {
-      return students.filter((student) => student.location === city);
-    }
-    return [];
+  // Check if students is an instance of Array
+  if (students instanceof Array) {
+    // If true, use filter to create a new array with students from the specified city
+    return students.filter((student) => student.location === city);
   }
+  // If students is not an array, return an empty array
+  return [];
+}
