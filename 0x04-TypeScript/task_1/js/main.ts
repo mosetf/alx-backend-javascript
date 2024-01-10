@@ -1,41 +1,48 @@
-interface DirectorInterface {
-    workFromHome(): string;
-    getCoffeeBreak(): string;
-    workDirectorTasks(): string;
+interface Teacher {
+    firstName: string;
+    lastName: string;
+    readonly fullTimeEmployee: boolean;
+    yearsOfExperience?: number;
+    readonly location: string;
+    [key: string]: boolean | number | string; // Allow any additional attribute
+  }
+  interface printTeacherFunction {
+    (firstName: string, lastName: string): string;
   }
   
-  interface TeacherInterface {
-    workFromHome(): string;
-    getCoffeeBreak(): string;
-    workTeacherTasks(): string;
+  // Implement the printTeacher function
+  const printTeacher: printTeacherFunction = (firstName, lastName) => {
+    const firstLetter = firstName.charAt(0).toUpperCase();
+    const fullLastName = lastName.charAt(0).toUpperCase() + lastName.slice(1);
+  
+    return `${firstLetter}. ${fullLastName}`;
+  };
+
+  interface StudentConstructor {
+    firstName: string;
+    lastName: string;
   }
   
-  // Implement the Director class
-  class Director implements DirectorInterface {
-    workFromHome(): string {
-      return "Working from home";
-    }
-  
-    getCoffeeBreak(): string {
-      return "Getting a coffee break";
-    }
-  
-    workDirectorTasks(): string {
-      return "Getting to director tasks";
-    }
+  interface StudentClassInterface {
+    workOnHomework(): string;
+    displayName(): string;
   }
   
-  // Implement the Teacher class
-  class Teacher implements TeacherInterface {
-    workFromHome(): string {
-      return "Cannot work from home";
+  // Implement the StudentClass
+  class StudentClass implements StudentClassInterface {
+    private firstName: string;
+    private lastName: string;
+  
+    constructor({ firstName, lastName }: StudentConstructor) {
+      this.firstName = firstName;
+      this.lastName = lastName;
     }
   
-    getCoffeeBreak(): string {
-      return "Cannot have a break";
+    workOnHomework(): string {
+      return "Currently working";
     }
   
-    workTeacherTasks(): string {
-      return "Getting to work";
+    displayName(): string {
+      return this.firstName;
     }
   }
