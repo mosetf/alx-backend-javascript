@@ -1,9 +1,7 @@
 /**
  * prints message in STDOUT
- * @param {*} message
+ *
  */
-function displayMessage (message) {
-  // dispalys message in STDOUT
-  console.log(message);
-}
+const displayMessage = (str) => console.log(str);
+
 module.exports = displayMessage;
